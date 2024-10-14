@@ -1,8 +1,12 @@
 import React from 'react';
-import './LandingPage.css'; // Import the CSS file
+import './LandingPage.css'; 
+import Navbar from '../Navbar/Navbar';// Import the CSS file
 
 const LandingPage = () => {
   return (
+    <div>
+    <Navbar />
+
     <section className="hero-section">
       <div>
         <div data-aos="fade-up" className="flex-hero">
@@ -30,7 +34,7 @@ const LandingPage = () => {
           </a>
         </div>
       </div>
-    </section>
+    </section></div>
   );
 };
 

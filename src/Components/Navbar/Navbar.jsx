@@ -37,13 +37,13 @@ const Navbar = () => {
         </li>
         {/* List item for the 'Sign Up' link with a button */}
         <li className="link">
-          <a href="../Sign_Up/Sign_Up.html">
+          <a href="/SignUp">
             <button className="btn1">Sign Up</button>
           </a>
         </li>
         {/* List item for the 'Login' link with a button */}
         <li className="link">
-          <a href="../Login/Login.html">
+          <a href="/Login">
             <button className="btn1">Login</button>
           </a>
         </li>
