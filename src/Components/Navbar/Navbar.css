@@ -82,8 +82,8 @@ nav {
 .nav__logo span {
     color: #3685fb;
 }
-.logo-img {
-    padding-bottom: 0;
+svg {
+    width: 30px;
 }
 /* Styling for the icon in the navbar */
 .nav__icon {
