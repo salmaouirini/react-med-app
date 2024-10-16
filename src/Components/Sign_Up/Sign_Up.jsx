@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Sign_Up.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config'; // Ensure you have API_URL defined in your config
 
 const SignUp = () => {
   // State for form inputs
@@ -9,9 +11,11 @@ const SignUp = () => {
     email: '',
     password: '',
   });
-  
-  // State for errors
+
+  // State for errors and success messages
   const [errors, setErrors] = useState({});
+  const [showerr, setShowerr] = useState(''); // Error state for API errors
+  const navigate = useNavigate(); // Hook to navigate to other routes
 
   // Handle input change
   const handleChange = (e) => {
@@ -42,26 +46,58 @@ const SignUp = () => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // return true if no errors
+    return Object.keys(newErrors).length === 0; // Return true if no errors
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      // Submit form if valid
-      console.log("Form submitted", formData);
-      // Add your form submission logic here
-    }
-  };
 
+    if (validateForm()) {
+        try {
+            const response = await fetch(`${API_URL}/api/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const json = await response.json();
+            console.log("API Response:", json); // Log the response to inspect its structure
+
+            if (json.authtoken) {
+                sessionStorage.setItem('auth-token', json.authtoken);
+                sessionStorage.setItem('name', formData.name);
+                sessionStorage.setItem('phone', formData.phone);
+                sessionStorage.setItem('email', formData.email);
+                navigate('/');
+                window.location.reload();
+            } else {
+                // Handle API errors (array of errors)
+                if (json.errors && Array.isArray(json.errors)) {
+                    const errorMsg = json.errors.map(err => err.msg).join(', '); // Extract the msg property
+                    setShowerr(errorMsg); // Set error message to show
+                } else {
+                    setShowerr(json.error || 'An unexpected error occurred.');
+                }
+            }
+        } catch (error) {
+            setShowerr('Failed to connect to the server. Please try again later.');
+        }
+    }
+};
+
+
+
+  
   return (
     <div className="container" style={{ marginTop: '5%' }}>
       <div className="signup-grid">
         <div className="signup-text">
           <h1>Sign Up</h1>
           <div className="signup-text1">
-            Already a member? <span><a href="/Login" style={{ color: '#2190FF' }}> Login</a></span>
+            Already a member? <span><a href="/Login" style={{ color: '#2190FF' }}>Login</a></span>
           </div>
         </div>
         
@@ -91,10 +127,13 @@ const SignUp = () => {
               {errors.password && <span className="error">{errors.password}</span>}
             </div>
 
+            {/* Display API error message */}
+            {showerr && <div style={{ color: 'red', marginBottom: '10px' }}>{showerr}</div>}
+
             <center>
               <div className="btn-group">
                 <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">Submit</button>
-                <button type="reset" className="btn btn-danger mb-2 waves-effect waves-light">Reset</button>
+                <button type="reset" className="btn btn-danger mb-2 waves-effect waves-light" onClick={() => setFormData({ name: '', phone: '', email: '', password: '' })}>Reset</button>
               </div>
             </center>
           </form>
