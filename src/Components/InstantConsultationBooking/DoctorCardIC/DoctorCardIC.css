@@ -149,6 +149,45 @@
   /* height: auto;
   overflow-y: auto; */
 }
+/* Styling for the appointment form inputs */
+.appointment-form input[type="date"],
+.appointment-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc; /* Standard border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    background-color: #fff; /* White background */
+    transition: border-color 0.3s ease; /* Smooth transition on focus */
+}
+
+/* Styling for focused state */
+.appointment-form input[type="date"]:focus,
+.appointment-form select:focus {
+    border-color: #3498db; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Additional styling for the date input to improve appearance */
+.appointment-form input[type="date"] {
+    appearance: none; /* Remove default styling */
+    background-image: url('path-to-your-calendar-icon.svg'); /* Add a calendar icon */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Position the icon */
+    background-size: 20px; /* Icon size */
+    padding-right: 40px; /* Space for the icon */
+}
+
+/* Styling for the time slot dropdown */
+.appointment-form select {
+    cursor: pointer; /* Show pointer on hover */
+    color: #333; /* Text color */
+}
+
+/* Add hover effect for dropdown */
+.appointment-form select:hover {
+    border-color: #007bff; /* Change border color on hover */
+}
 
 .form-group {
   margin-bottom: 20px;
