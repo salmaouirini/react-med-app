@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navbar.css';  // Import the CSS file
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate(); // Hook to navigate to other routes
@@ -53,6 +53,11 @@ const Navbar = () => {
       <ul className="nav__links active">
         {isLoggedIn ? (
           <>
+            <li>
+                <Link to="/ReviewForm">
+                    Review
+                </Link>
+            </li>
             {/* Display the user's name and logout button */}
             <li>
                 <span>Welcome, {username}</span>
@@ -64,9 +69,6 @@ const Navbar = () => {
         ) : (
           <>
             {/* Links for unauthenticated users */}
-            <li className="link">
-              <a href="../Landing_Page/LandingPage.html">Home</a>
-            </li>
             <li className="link">
               <a href="/SignUp">
                 <button className="btn1">Sign Up</button>

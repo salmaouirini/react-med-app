@@ -1,0 +1,72 @@
+.review-form-container {
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.doctor-review-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.doctor-review-table th, .doctor-review-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.btn-feedback {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-disabled {
+  background-color: #ccc;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+}
+
+.btn-feedback:hover {
+  background-color: #0056b3;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-content form div {
+  margin-bottom: 15px;
+}
+
+.modal-content input, .modal-content textarea, .modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.modal-content button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #218838;
+}
+.star-rating {
+    font-size: 24px; /* Size of the stars */
+  }
+  
+  .star-rating span {
+    margin-right: 5px; /* Space between stars */
+  }
+  
