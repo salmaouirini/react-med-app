@@ -7,6 +7,7 @@ import ProfileCard from '../ProfileCard/ProfileCard';
 const Navbar = () => {
   const navigate = useNavigate(); // Hook to navigate to other routes
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [viewReports, setViewReports] = useState(false);
 
 
   // Function to handle logout
@@ -20,6 +21,10 @@ const Navbar = () => {
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  const toggleViewReports = () => {
+    setViewReports(!viewReports);
   };
 
   // Check if user is logged in
@@ -72,7 +77,14 @@ const Navbar = () => {
                 <span onClick={toggleDropdown}>Welcome, {username}</span>
                 {dropdownOpen && (
                 <div className="dropdown-content">
-                  <ProfileCard user={{ name, email, phone }} />
+                    <button>
+                        <Link to='/ProfileCard'>
+                            Your Profile
+                        </Link>
+                    </button>
+                  <button >
+                    <Link onClick={toggleViewReports} to='/ReportsLayout'>Your Reports</Link>
+                    </button>
                 </div>
               )}
             </li>

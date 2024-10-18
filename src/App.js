@@ -9,6 +9,8 @@ import SignUp from './Components/Sign_Up/Sign_Up';
 import Login from './Components/Login/Login';
 import ReviewForm from './Components/ReviewForm/ReviewForm';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation'
+import ProfileCard from './Components/ProfileCard/ProfileCard';
+import ReportsLayout from './Components/ReportsLayout/ReportsLayout';
 
 
 function App() {
@@ -27,7 +29,9 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/ReviewForm" element={<ReviewForm doctors={doctors} />} />
         <Route path="/instant-consultation" element={<InstantConsultation />} />
-
+        <Route path="/ReportsLayout" element={<ReportsLayout />} />
+        <Route path='/ProfileCard' element={<ProfileCard />}/>
+                            
 
 
       </Routes>

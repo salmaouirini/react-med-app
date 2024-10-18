@@ -1,0 +1,42 @@
+.reports-container {
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .reports-table th, .reports-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .reports-table th {
+    background-color: #f9f9f9;
+  }
+  
+  .reports-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .btn-view, .btn-download {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .btn-download {
+    background-color: #28a745;
+  }
+  
+  .btn-view:hover, .btn-download:hover {
+    opacity: 0.8;
+  }
+  
