@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';  // Import the CSS file
 import { useNavigate, Link } from 'react-router-dom';
+import ProfileCard from '../ProfileCard/ProfileCard';
+
 
 const Navbar = () => {
   const navigate = useNavigate(); // Hook to navigate to other routes
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
 
   // Function to handle logout
   const handleLogout = () => {
@@ -14,10 +18,15 @@ const Navbar = () => {
     navigate('/Login'); // Redirect to login page after logout
   };
 
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   // Check if user is logged in
   const isLoggedIn = !!sessionStorage.getItem('auth-token');
   
-  
+  const email = sessionStorage.getItem('email');
+  const phone = sessionStorage.getItem('phone');
   const name = sessionStorage.getItem('name'); // Get name from session storage
   const username = name ? name.split('@')[0] : 'User'; // Get name before '@'
 
@@ -54,13 +63,18 @@ const Navbar = () => {
         {isLoggedIn ? (
           <>
             <li>
-                <Link to="/ReviewForm">
+                <Link to="/ReviewForm" >
                     Review
                 </Link>
             </li>
             {/* Display the user's name and logout button */}
-            <li>
-                <span>Welcome, {username}</span>
+            <li className="profile-dropdown">
+                <span onClick={toggleDropdown}>Welcome, {username}</span>
+                {dropdownOpen && (
+                <div className="dropdown-content">
+                  <ProfileCard user={{ name, email, phone }} />
+                </div>
+              )}
             </li>
             <li className="link">
               <button className="btn1" onClick={handleLogout}>Logout</button>
