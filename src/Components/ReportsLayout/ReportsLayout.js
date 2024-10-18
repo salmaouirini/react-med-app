@@ -9,9 +9,9 @@ const ReportsLayout = () => {
     const fetchReports = async () => {
       // Dummy data for now
       const mockReports = [
-        { id: 1, doctorName: 'Dr. John Smith', speciality: 'Cardiology', reportUrl: '/reports/report1.pdf' },
-        { id: 2, doctorName: 'Dr. Emily Davis', speciality: 'Dermatology', reportUrl: '/reports/report2.pdf' },
-        { id: 3, doctorName: 'Dr. Robert Brown', speciality: 'Neurology', reportUrl: '/reports/report3.pdf' },
+        { id: 1, doctorName: 'Dr. John Smith', speciality: 'Cardiology', reportUrl: '/patient_report.pdf' },
+        { id: 2, doctorName: 'Dr. Emily Davis', speciality: 'Dermatology', reportUrl: '/patient_report.pdf' },
+        { id: 3, doctorName: 'Dr. Robert Brown', speciality: 'Neurology', reportUrl: '/patient_report.pdf' },
       ];
       setReports(mockReports);
     };
@@ -19,16 +19,16 @@ const ReportsLayout = () => {
     fetchReports();
   }, []);
 
-  // Function to handle viewing a report (replace with actual logic)
+  // Function to handle viewing a report (opens in a new tab)
   const handleViewReport = (reportUrl) => {
     window.open(reportUrl, '_blank');
   };
 
-  // Function to handle downloading a report (replace with actual logic)
+  // Function to handle downloading a report
   const handleDownloadReport = (reportUrl) => {
     const link = document.createElement('a');
     link.href = reportUrl;
-    link.setAttribute('download', 'report.pdf'); // or dynamically generate the report name
+    link.setAttribute('download', 'patient_report.pdf');
     document.body.appendChild(link);
     link.click();
     link.parentNode.removeChild(link);
